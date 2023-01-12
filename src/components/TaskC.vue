@@ -1,5 +1,5 @@
 <template>
-    <div :class="[task.reminder ? 'task reminder' : 'task']">
+    <div @dblclick="onToggleRequired(task.id)" :class="[task.reminder ? 'task reminder' : 'task']">
         <h3>{{ task.text }}
             <i @click="onDelete(task.id)" class="fas fa-times"></i>
         </h3>
@@ -20,16 +20,18 @@ export default defineComponent({
     },
     methods: {
         onDelete(id: string) {
-            this.$emit("delete-task", id)
+            this.$emit("delete-task", id);
+        },
+        onToggleRequired(id: string) {
+            this.$emit("toggle-reminder", id);
         }
-    }
+    },
 })
 </script>
 
 <style scoped>
 .fas {
     color: red;
-    cursor: pointer;
 }
 
 .task {
@@ -37,6 +39,20 @@ export default defineComponent({
     border-radius: 0.5rem;
     margin: 5px;
     padding: 2rem;
+    transition: scale 0.3s ease-in-out;
+    cursor: pointer;
+    user-select: none;
+    border-left: 5px solid transparent;
+}
+
+.task:hover {
+    background: #f4f4f4;
+    scale: 1.02;
+    border-radius: 0.5rem;
+    margin: 5px;
+    padding: 2rem;
+    border-left: 5px solid transparent;
+    transition: border-color 0.2s ease-in-out;
 }
 
 .task.reminder {

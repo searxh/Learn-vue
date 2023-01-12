@@ -1,7 +1,8 @@
 <template>
     <ul>
         <li v-for="(task, index) in tasks" :key="index">
-            <TaskC @delete-task="$emit('delete-task',task.id)" :task="task" />
+            <TaskC @delete-task="$emit('delete-task',task.id)" @toggle-reminder="$emit('toggle-reminder',task.id)"
+                :task="task" />
         </li>
     </ul>
 </template>

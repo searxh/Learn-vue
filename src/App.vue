@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <HeaderC title="Task Tracker" />
-    <TasksC @delete-task="deleteTask" :tasks="tasks" />
+    <TasksC @delete-task="deleteTask" @toggle-reminder="toggleReminder" :tasks="tasks" />
   </div>
 </template>
 
@@ -21,7 +21,15 @@ export default defineComponent({
       if (confirm("Are you sure?")) {
         this.tasks = this.tasks.filter((taskItem: TaskItemInterface) => taskItem.id !== id);
       }
-    }
+    },
+    toggleReminder(id: string) {
+      const taskIndex = this.tasks.findIndex((taskItem: TaskItemInterface) => taskItem.id === id);
+      const selectedTask = this.tasks[taskIndex];
+      const oldReminder = selectedTask.reminder;
+      if (taskIndex !== -1) {
+        this.tasks[taskIndex] = { ...selectedTask, reminder: !oldReminder };
+      }
+    },
   },
   setup() {
     const tasks: Ref<Array<TaskItemInterface>> = ref([
