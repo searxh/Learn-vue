@@ -1,13 +1,21 @@
 <template>
     <header>
-        <h1>Task tracker</h1>
+        <h1>{{ title }}</h1>
+        <ButtonC />
     </header>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import ButtonC from "./ButtonC.vue"
 export default defineComponent({
-    name: "HeaderC"
+    name: "HeaderC",
+    components: {
+        ButtonC
+    },
+    props: {
+        title: String,
+    },
 })
 </script>
 
