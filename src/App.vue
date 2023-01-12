@@ -1,17 +1,20 @@
 <template>
   <div class="container">
     <HeaderC title="Task Tracker" />
+    <TasksC :tasks="tasks" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, Ref, ref } from "vue";
 import HeaderC from "./components/HeaderC.vue";
+import TasksC from "./components/TasksC.vue";
 import { TaskItemInterface } from "../types";
 export default defineComponent({
   name: "App",
   components: {
-    HeaderC
+    HeaderC,
+    TasksC
   },
   setup() {
     const tasks: Ref<Array<TaskItemInterface>> = ref([
