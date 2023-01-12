@@ -5,12 +5,36 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, Ref, ref } from "vue";
 import HeaderC from "./components/HeaderC.vue";
+import { TaskItemInterface } from "../types";
 export default defineComponent({
   name: "App",
   components: {
     HeaderC
+  },
+  setup() {
+    const tasks: Ref<Array<TaskItemInterface>> = ref([
+      {
+        id: "1",
+        text: "Doctors Appointment",
+        day: "March 5th at 2:30pm",
+        reminder: true
+      },
+      {
+        id: "2",
+        text: "Meeting with boss",
+        day: "March 6th at 1:30pm",
+        reminder: true
+      },
+      {
+        id: "3",
+        text: "Food shopping",
+        day: "March 7th at 2:00pm",
+        reminder: false
+      }
+    ])
+    return { tasks };
   },
 })
 </script>
