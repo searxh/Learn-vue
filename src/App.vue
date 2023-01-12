@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <HeaderC title="Task Tracker" />
-    <TasksC :tasks="tasks" />
+    <TasksC @delete-task="deleteTask" :tasks="tasks" />
   </div>
 </template>
 
@@ -15,6 +15,13 @@ export default defineComponent({
   components: {
     HeaderC,
     TasksC
+  },
+  methods: {
+    deleteTask(id: string) {
+      if (confirm("Are you sure?")) {
+        this.tasks = this.tasks.filter((taskItem: TaskItemInterface) => taskItem.id !== id);
+      }
+    }
   },
   setup() {
     const tasks: Ref<Array<TaskItemInterface>> = ref([
