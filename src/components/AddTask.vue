@@ -34,7 +34,7 @@ export default defineComponent({
   name: "AddTask",
   setup() {
     const formData: Ref<FormDataInterface> = ref({
-      text: "Test",
+      text: "",
       day: "",
       reminder: false,
     });
@@ -43,8 +43,14 @@ export default defineComponent({
   methods: {
     onSubmit(e: Event) {
       e.preventDefault();
-      if (!this.formData.text) {
-        alert("Please add a task");
+      if (!this.formData.text || !this.formData.day) {
+        if (this.formData.day) {
+          alert("Please add a task");
+        } else if (this.formData.text) {
+          alert("Please add a day & time");
+        } else {
+          alert("Please add both task and day & time");
+        }
         return;
       }
       const newTask = {
