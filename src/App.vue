@@ -4,7 +4,11 @@
     <div v-show="showAddTask">
       <AddTask @add-task="addTask" />
     </div>
-    <TasksC @delete-task="deleteTask" @toggle-reminder="toggleReminder" :tasks="tasks" />
+    <TasksC
+      @delete-task="deleteTask"
+      @toggle-reminder="toggleReminder"
+      :tasks="tasks"
+    />
   </div>
 </template>
 
@@ -24,15 +28,22 @@ export default defineComponent({
   methods: {
     deleteTask(id: string) {
       if (confirm("Are you sure?")) {
-        this.tasks = this.tasks.filter((taskItem: TaskItemInterface) => taskItem.id !== id);
+        this.tasks = this.tasks.filter(
+          (taskItem: TaskItemInterface) => taskItem.id !== id
+        );
       }
     },
     toggleReminder(id: string) {
-      const taskIndex = this.tasks.findIndex((taskItem: TaskItemInterface) => taskItem.id === id);
+      const taskIndex = this.tasks.findIndex(
+        (taskItem: TaskItemInterface) => taskItem.id === id
+      );
       const selectedTask = this.tasks[taskIndex];
       const oldReminder = selectedTask.reminder;
       if (taskIndex !== -1) {
-        this.tasks[taskIndex] = { ...selectedTask, reminder: !oldReminder };
+        this.tasks[taskIndex] = {
+          ...selectedTask,
+          reminder: !oldReminder,
+        };
       }
     },
     addTask(newTask: TaskItemInterface) {
@@ -40,7 +51,7 @@ export default defineComponent({
     },
     toggleAddTask() {
       this.showAddTask = !this.showAddTask;
-    }
+    },
   },
   setup() {
     const tasks: Ref<Array<TaskItemInterface>> = ref([
@@ -48,25 +59,25 @@ export default defineComponent({
         id: "1",
         text: "Doctors Appointment",
         day: "March 5th at 2:30pm",
-        reminder: true
+        reminder: true,
       },
       {
         id: "2",
         text: "Meeting with boss",
         day: "March 6th at 1:30pm",
-        reminder: true
+        reminder: true,
       },
       {
         id: "3",
         text: "Food shopping",
         day: "March 7th at 2:00pm",
-        reminder: false
-      }
+        reminder: false,
+      },
     ]);
     const showAddTask = ref(false);
     return { tasks, showAddTask };
   },
-})
+});
 </script>
 
 <style>
