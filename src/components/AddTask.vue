@@ -53,8 +53,7 @@ export default defineComponent({
         }
         return;
       }
-      const newTask = {
-        id: Math.floor(Math.random() * 100000),
+      const newTask: FormDataInterface = {
         text: this.formData.text,
         day: format(new Date(this.formData.day), "PPPp"),
         reminder: this.formData.reminder,
