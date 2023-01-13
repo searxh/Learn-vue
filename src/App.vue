@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <HeaderC title="Task Tracker" />
+    <AddTask />
     <TasksC @delete-task="deleteTask" @toggle-reminder="toggleReminder" :tasks="tasks" />
   </div>
 </template>
@@ -9,12 +10,14 @@
 import { defineComponent, Ref, ref } from "vue";
 import HeaderC from "./components/HeaderC.vue";
 import TasksC from "./components/TasksC.vue";
+import AddTask from "./components/AddTask.vue";
 import { TaskItemInterface } from "../types";
 export default defineComponent({
   name: "App",
   components: {
     HeaderC,
-    TasksC
+    TasksC,
+    AddTask,
   },
   methods: {
     deleteTask(id: string) {
