@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <HeaderC title="Task Tracker" />
-    <AddTask />
+    <AddTask @add-task="addTask" />
     <TasksC @delete-task="deleteTask" @toggle-reminder="toggleReminder" :tasks="tasks" />
   </div>
 </template>
@@ -33,6 +33,9 @@ export default defineComponent({
         this.tasks[taskIndex] = { ...selectedTask, reminder: !oldReminder };
       }
     },
+    addTask(newTask: TaskItemInterface) {
+      this.tasks.push(newTask);
+    }
   },
   setup() {
     const tasks: Ref<Array<TaskItemInterface>> = ref([
