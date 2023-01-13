@@ -14,7 +14,7 @@ export default defineComponent({
     },
     methods: {
         onClick() {
-            console.log("clicked")
+            this.$emit("toggle-add-task");
         }
     }
 })

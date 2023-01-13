@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <HeaderC title="Task Tracker" />
+    <HeaderC @toggle-add-task="toggleAddTask" title="Task Tracker" />
     <div v-show="showAddTask">
       <AddTask @add-task="addTask" />
     </div>
@@ -37,6 +37,9 @@ export default defineComponent({
     },
     addTask(newTask: TaskItemInterface) {
       this.tasks.push(newTask);
+    },
+    toggleAddTask() {
+      this.showAddTask = !this.showAddTask;
     }
   },
   setup() {
@@ -60,7 +63,7 @@ export default defineComponent({
         reminder: false
       }
     ]);
-    const showAddTask = true;
+    const showAddTask = ref(false);
     return { tasks, showAddTask };
   },
 })
