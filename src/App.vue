@@ -1,7 +1,9 @@
 <template>
   <div class="container">
     <HeaderC title="Task Tracker" />
-    <AddTask @add-task="addTask" />
+    <div v-show="showAddTask">
+      <AddTask @add-task="addTask" />
+    </div>
     <TasksC @delete-task="deleteTask" @toggle-reminder="toggleReminder" :tasks="tasks" />
   </div>
 </template>
@@ -57,8 +59,9 @@ export default defineComponent({
         day: "March 7th at 2:00pm",
         reminder: false
       }
-    ])
-    return { tasks };
+    ]);
+    const showAddTask = true;
+    return { tasks, showAddTask };
   },
 })
 </script>
