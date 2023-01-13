@@ -1,0 +1,22 @@
+{
+    "tasks":[
+    {
+      "id": "1",
+      "text": "Doctors Appointment",
+      "day": "March 5th, 2022 at 2:30 PM",
+      "reminder": true
+    },
+    {
+      "id": "2",
+      "text": "Meeting with boss",
+      "day": "March 6th, 2022 at 1:30 PM",
+      "reminder": true
+    },
+    {
+      "id": "3",
+      "text": "Food shopping",
+      "day": "March 7th, 2022 at 2:00 PM",
+      "reminder": false
+    }
+  ]
+}
