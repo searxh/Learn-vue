@@ -12,7 +12,7 @@
     <div class="form-control">
       <label>Day & Time</label>
       <input
-        type="text"
+        type="date"
         name="day"
         v-model="formData.day"
         placeholder="Add Day & Time"
@@ -29,6 +29,7 @@
 <script lang="ts">
 import { defineComponent, ref, Ref } from "vue";
 import { FormDataInterface } from "../../types";
+import format from "date-fns/format";
 export default defineComponent({
   name: "AddTask",
   setup() {
@@ -49,7 +50,7 @@ export default defineComponent({
       const newTask = {
         id: Math.floor(Math.random() * 100000),
         text: this.formData.text,
-        day: this.formData.day,
+        day: format(new Date(this.formData.day), "PPPp"),
         reminder: this.formData.reminder,
       };
       this.$emit("add-task", newTask);

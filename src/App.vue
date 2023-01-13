@@ -62,19 +62,19 @@ export default defineComponent({
       {
         id: "1",
         text: "Doctors Appointment",
-        day: "March 5th at 2:30pm",
+        day: "March 5th, 2022 at 2:30 PM",
         reminder: true,
       },
       {
         id: "2",
         text: "Meeting with boss",
-        day: "March 6th at 1:30pm",
+        day: "March 6th, 2022 at 1:30 PM",
         reminder: true,
       },
       {
         id: "3",
         text: "Food shopping",
-        day: "March 7th at 2:00pm",
+        day: "March 7th, 2022 at 2:00 PM",
         reminder: false,
       },
     ]);
