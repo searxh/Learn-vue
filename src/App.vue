@@ -13,6 +13,7 @@
       @toggle-reminder="toggleReminder"
       :tasks="tasks"
     />
+    <FooterC />
   </div>
 </template>
 
@@ -21,6 +22,7 @@ import { defineComponent, Ref, ref } from "vue";
 import HeaderC from "./components/HeaderC.vue";
 import TasksC from "./components/TasksC.vue";
 import AddTask from "./components/AddTask.vue";
+import FooterC from "./components/FooterC.vue";
 import { TaskItemInterface } from "../types";
 export default defineComponent({
   name: "App",
@@ -28,6 +30,7 @@ export default defineComponent({
     HeaderC,
     TasksC,
     AddTask,
+    FooterC,
   },
   methods: {
     async deleteTask(id: string) {
